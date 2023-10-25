@@ -1,0 +1,57 @@
+﻿<Window x:Class="EersteWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EersteWPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <Border BorderBrush="#0B666D" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center"> <!--Style="{StaticResource BGColor}"-->
+
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=DarkModeCb}" Value="True">
+                            <Setter Property="Background" Value="#333333"/>
+                        </DataTrigger>
+                    </Style.Triggers></Style>
+
+            </Border.Style>
+
+            <StackPanel Margin="10">
+
+                <TextBlock FontSize="16" FontWeight="Bold" Margin="0 0 0 10">
+                    <Run Language="en-be" Text="QWERTY &lt;-&gt; AZERTY converter"/>
+                </TextBlock>
+
+                <StackPanel Orientation="Vertical" Margin="0 0 0 10">
+                    <TextBlock>
+                        <Run Text="Input in"/>
+                        <Run Text="QWERTY/AZERTY"/>
+                    </TextBlock>
+                    <TextBox Name="userInputText" Height="40"/> <!--inputField-->
+                </StackPanel>
+
+                <Button Content="Let le magik begin" Click="ConvertButton_Click" Width="125" HorizontalAlignment="Center" Margin="0 5"/>
+
+                <StackPanel Orientation="Vertical" Margin="0 5">
+                    <TextBlock>
+                        <Run Text="Output"/>
+                    </TextBlock>
+
+                    <Border BorderThickness="1">
+                        <TextBlock Name="outputConversionTBl" Height="40"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" >
+                    <CheckBox Name="DarkModeCb" Content="Enable dark mode" Click="DarkModeCB_Clicked"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+
